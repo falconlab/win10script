@@ -6,6 +6,10 @@ This is the Ultimate Windows 10 Script from a creation from multiple debloat scr
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/falconlab/win10script/master/win10debloat.ps1'))
 ```
 
+## Modificado por Falcon para SAI
+- Agregados programas por defecto
+- Deshabilita y desinstala OneDrive
+
 ## My Additions
 
 - Dark Mode
