@@ -4,6 +4,10 @@
 # Primary Author Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script
 # Tweaked Source: https://gist.github.com/alirobe/7f3b34ad89a159e6daa1/
 #
+# Mod por F@lcon
+#
+#
+#
 #    Note from author: Never run scripts without reading them & understanding what they do.
 #
 #	Addition: One command to rule them all, One command to find it, and One command to Run it! 
@@ -31,12 +35,13 @@ $tweaks = @(
 	### Chris Titus Tech Additions
 	"TitusRegistryTweaks",
 	"InstallTitusProgs", #REQUIRED FOR OTHER PROGRAM INSTALLS!
-	"Install7Zip",
-	"InstallNotepadplusplus",
+	#"Install7Zip",
+	#"InstallNotepadplusplus",
 	#"InstallIrfanview",
-	"InstallVLC",
-	"InstallAdobe",
+	#"InstallVLC",
+	#"InstallAdobe",
 	#"InstallBrave",
+	"InstallSAISoftwarePack",
 	"ChangeDefaultApps",
 
 	### Windows Apps
@@ -242,7 +247,7 @@ Function InstallTitusProgs {
 	choco install chocolatey-core.extension -y
 	Write-Output "Running O&O Shutup with Recommended Settings"
 	Import-Module BitsTransfer
-	Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
+	Start-BitsTransfer -Source "https://raw.githubusercontent.com/falconlab/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
 	Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
 	./OOSU10.exe ooshutup10.cfg /quiet
 }
@@ -289,9 +294,12 @@ Function InstallIrfanview {
 	Show-Choco-Menu -Title "Do you want to install Irfanview?" -ChocoInstall "irfanview"
 }
 
+Function InstallSAISoftwarePack {
+	choco install 7zip notepadplusplus vlc adobereader firefox anydesk.install jre8 -y
+
 Function ChangeDefaultApps {
-	Write-Output "Setting Default Programs - Notepad++ Brave VLC IrFanView"
-	Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/MyDefaultAppAssociations.xml" -Destination $HOME\Desktop\MyDefaultAppAssociations.xml
+	Write-Output "Setting Default Programs - Notepad++ Firefox VLC"
+	Start-BitsTransfer -Source "https://raw.githubusercontent.com/falconlab/win10script/master/MyDefaultAppAssociations.xml" -Destination $HOME\Desktop\MyDefaultAppAssociations.xml
 	dism /online /Import-DefaultAppAssociations:"%UserProfile%\Desktop\MyDefaultAppAssociations.xml"
 }
 
