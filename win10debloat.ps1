@@ -296,6 +296,7 @@ Function InstallIrfanview {
 
 Function InstallSAISoftwarePack {
 	choco install 7zip notepadplusplus vlc adobereader firefox anydesk.install jre8 -y
+}
 
 Function ChangeDefaultApps {
 	Write-Output "Setting Default Programs - Notepad++ Firefox VLC"
